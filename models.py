@@ -150,7 +150,13 @@ class GoDjangoNotifyFolders(models.Model):
             base_path, file_name = os.path.split(temp_path)
             file_name = ".".join(file_name.split(".")[:-1])
             os.rename(temp_path,  os.path.join(base_path, file_name))
-    
+    def delete(self, *args, **kwargs):
+        path = os.path.join(self.gdn.base_path, self.folder)
+        if is_subfolder(path, True):
+            #print(path)
+            rm(path, True)
+        return super().delete(*args,**kwargs)
+
     def clear(self, ):
         path = os.path.join(self.gdn.base_path, self.folder)
         for file in os.listdir(path):
