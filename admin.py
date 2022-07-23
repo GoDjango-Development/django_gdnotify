@@ -47,7 +47,7 @@ admin_sites = get_plugin(PLUGIN_NAME).get("admin_sites", [])
 super_admin_sites = get_plugin(PLUGIN_NAME).get("super_admin_sites", [])
 
 if len(admin_sites) == 0 and len(super_admin_sites) == 0:
-    admin.site.register(GoDjangoNotify, admin_class=GoDjangoNotifyAdmin)
+    admin.site.register(GoDjangoNotify, admin_class=SuperGoDjangoNotifyAdmin)
 
 if len(super_admin_sites) > 0: 
     for admin_site in admin_sites:
