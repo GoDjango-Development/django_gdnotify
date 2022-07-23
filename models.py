@@ -160,7 +160,9 @@ class GoDjangoNotifyFolders(models.Model):
             
     def save(self, *args, **kwargs) -> None:
         if not is_secure_folder(self.folder):
-            identifier = getattr(self.gdn.dependant, get_plugin(PLUGIN_NAME).get("dependant_identifier", None), "username")
+            identifier = ""
+            if hasattr(self.gdn, "dependant"):
+                identifier = getattr(self.gdn.dependant, get_plugin(PLUGIN_NAME).get("dependant_identifier", None), "username")
             self.folder = sha256((str(now()) + str(identifier)).encode()).hexdigest() + ".sd"
         path = os.path.join(self.gdn.base_path, self.folder)
         if is_secure_folder(self.folder):
