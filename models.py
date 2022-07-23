@@ -91,7 +91,7 @@ class GoDjangoNotify(models.Model):
         max_length=50
     )
     def push(self, data: dict=None, name:str="unknown", **kwargs):
-        folders = GoDjangoNotifyFolders.objects.filter(gdn=self.id)
+        folders = GoDjangoNotifyFolders.objects.filter(gdn=self.id, is_enabled=True)
         for folder in folders:
             folder.push(data=data, name=name, **kwargs)
 
@@ -135,21 +135,25 @@ class GoDjangoNotifyFolders(models.Model):
             assert kwargs.get(key, False), "Missing key '%s' for this GDN Version"%key
 
     def push(self, data: dict=None, name:str="unknown", **kwargs):
+        if not self.is_enabled:
+            return
         if data is None:
             data = kwargs
         path = os.path.join(self.gdn.base_path, self.folder)
-        data["name"] = name
+        if data.get("name", None) is None:
+            data["name"] = name
         self.check_args(**data)
         if not os.path.exists(path):
             mkdir(path, recursive = True)
         counter: int = len(os.listdir(path))
-        name = "_".join((str(counter), name, str(int(now().timestamp())))) + ".json.tmp"
+        name = "_".join((str(counter), data["name"], str(int(now().timestamp())))) + ".json.tmp"
         temp_path = os.path.join(path, name)
         with open(temp_path, "x") as file:
             file.write(json.dumps(data, ensure_ascii=False, sort_keys=True, indent=True))
             base_path, file_name = os.path.split(temp_path)
             file_name = ".".join(file_name.split(".")[:-1])
             os.rename(temp_path,  os.path.join(base_path, file_name))
+    
     def delete(self, *args, **kwargs):
         path = os.path.join(self.gdn.base_path, self.folder)
         if is_subfolder(path, True):
