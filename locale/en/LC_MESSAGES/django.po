@@ -1,0 +1,73 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-06-29 20:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: gdnotify/apps.py:7
+msgid "Installed Apps"
+msgstr ""
+
+#: gdnotify/models.py:25
+msgid "Given path already exists, please choose a new one"
+msgstr ""
+
+#: gdnotify/models.py:35
+msgid "Invalid domain name, please use one like tfproto.expresscuba.com"
+msgstr ""
+
+#: gdnotify/models.py:43
+msgid ""
+"Given path is not a subpath of our project folder :) you can't explore our "
+"filesystem"
+msgstr ""
+
+#: gdnotify/models.py:85
+msgid "Path to base folder"
+msgstr ""
+
+#: gdnotify/models.py:88
+msgid "Tfprotocol Port"
+msgstr ""
+
+#: gdnotify/models.py:89
+msgid "Tfprotocol domain name"
+msgstr ""
+
+#: gdnotify/models.py:119
+msgid "GoDjango Notify"
+msgstr ""
+
+#: gdnotify/models.py:120
+msgid "GDN Settings"
+msgstr ""
+
+#: gdnotify/models.py:125
+msgid "Secure Folder"
+msgstr ""
+
+#: gdnotify/models.py:126
+msgid "Is this folder enabled?"
+msgstr ""
+
+#: gdnotify/models.py:127
+msgid "Mark this to successfully add or enable this folder..."
+msgstr ""
+
+#: gdnotify/models.py:171 gdnotify/models.py:172
+msgid "GDN Folders"
+msgstr ""
