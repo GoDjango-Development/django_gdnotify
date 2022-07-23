@@ -25,5 +25,5 @@ INSTALLED_PLUGINS = {
         ]
     }
 }
-#ROOT_URLCONF = 'intercloud.urls'
+
 ```
