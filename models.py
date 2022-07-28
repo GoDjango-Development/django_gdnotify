@@ -49,7 +49,7 @@ def is_subfolder(value:str, no_raise=False):
 
 def enclose_func(func, *args):
     def wrapped(*paths, **kwargs):
-        has_out_of_folder = (False in map(lambda path: is_subfolder(path), paths))
+        has_out_of_folder = (False in map(lambda path: is_subfolder(path, True), paths))
         if not has_out_of_folder:
             return func(*paths, **kwargs)
         return False
